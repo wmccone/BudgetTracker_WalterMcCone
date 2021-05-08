@@ -19,6 +19,11 @@ request.onupgradeneeded = function (e) {
   }
 };
 
+//Should log an error if one is seen in the request
+request.onerror = function (e) {
+  console.log(e.target.errorCode);
+};
+
 
 function checkDatabase() {
 
