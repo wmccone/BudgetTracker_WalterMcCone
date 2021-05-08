@@ -2,6 +2,24 @@ let db;
 // Create a new db request for a database.
 const request = indexedDB.open('IndexedBudget');
 
+//Should update the IndexDB if using an old version
+request.onupgradeneeded = function (e) {
+  console.log('Upgrade needed in IndexDB');
+
+  const { oldVersion } = e;
+  const newVersion = e.newVersion || db.version;
+
+  console.log(`DB Updated from version ${oldVersion} to ${newVersion}`);
+
+  db = e.target.result;
+
+  //this should create  the store if nothing exists
+  if (db.objectStoreNames.length === 0) {
+    db.createObjectStore('StoredBudget', { autoIncrement: true });
+  }
+};
+
+
 function checkDatabase() {
 
   // Open a transaction on the StoredBudget db
