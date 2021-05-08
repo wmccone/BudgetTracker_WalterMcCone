@@ -5,7 +5,7 @@ const FILES_TO_CACHE = [
     "/index.html",
     "/manifest.webmanifest",
     "/index.js",
-    "/style.css",
+    "/styles.css",
     "/icons/icon-512x512.png",
     "/icons/icon-192x192.png"
 ];
@@ -16,7 +16,10 @@ self.addEventListener("install", event => {
             .open(STATIC_CACHE)
             .then(cache => cache.addAll(FILES_TO_CACHE))
             .then(() => self.skipWaiting())
+            .catch(err => console.log(err))
+            
     );
+    
 });
 
 // Going to remove old caches
