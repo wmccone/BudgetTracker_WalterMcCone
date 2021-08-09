@@ -15,7 +15,7 @@
 
   ## Installation
 
-  Go to the [deployed app](https://fierce-lake-02497.herokuapp.com/)
+  Go to the [deployed app](https://wmccone-budget-tracker.herokuapp.com/)
 
   ## Usage
 
